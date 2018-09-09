@@ -26,7 +26,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LimitedQueueVectorTest.cpp">
+    <ClCompile Include="LimitedVectorQueueTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LimitedDeqQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

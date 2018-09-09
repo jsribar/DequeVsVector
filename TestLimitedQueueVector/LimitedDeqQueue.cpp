@@ -8,21 +8,23 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTests
-{		
-	TEST_CLASS(LimitedQueueVectorTest)
+{
+	TEST_CLASS(limited_deq_queue)
 	{
 	public:
-		
+		template <typename T>
+		using queue = core::unpacker::certutil::limited_deq_queue<T>;
+
 		TEST_METHOD(push_back_increases_size)
 		{
-			limited_queue<std::vector<char>> lq(5);
+			queue<char> lq(5);
 			lq.push_back('A');
 			Assert::AreEqual(size_t(1), lq.size());
 		}
 
 		TEST_METHOD(push_back_doesnot_increase_size_beyond_max_size)
 		{
-			limited_queue<std::vector<char>> lq(2);
+			queue<char> lq(2);
 			lq.push_back('A');
 			lq.push_back('B');
 			Assert::AreEqual(size_t(2), lq.size());
@@ -30,12 +32,22 @@ namespace UnitTests
 			Assert::AreEqual(size_t(2), lq.size());
 		}
 
-		TEST_METHOD(begin_returns_iterator_to_first_element)
+		TEST_METHOD(cbegin_returns_iterator_to_first_element)
 		{
-			limited_queue<std::vector<char>> lq(2);
+			queue<char> lq(2);
 			lq.push_back('A');
 			lq.push_back('B');
-			Assert::AreEqual('A', *lq.begin());
+			Assert::AreEqual('A', *lq.cbegin());
+		}
+
+		TEST_METHOD(clear_removes_all_elements)
+		{
+			queue<char> lq(2);
+			lq.push_back('A');
+			lq.push_back('B');
+			lq.clear();
+			Assert::AreEqual(size_t(0), lq.size());
+			Assert::IsTrue(lq.empty());
 		}
 
 	};
