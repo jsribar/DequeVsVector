@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="limited_queue.h" />
+    <ClInclude Include="multi_pattern_match.h" />
     <ClInclude Include="StopWatch.h" />
   </ItemGroup>
   <ItemGroup>

@@ -12,19 +12,18 @@ namespace UnitTests
 	TEST_CLASS(limited_vector_queue)
 	{
 	public:
-		template <typename T>
-		using queue = core::unpacker::certutil::limited_vector_queue<T>;
+		using queue = core::unpacker::certutil::limited_vector_queue<char>;
 
 		TEST_METHOD(push_back_increases_size)
 		{
-			queue<char> lq(5);
+			queue lq(5);
 			lq.push_back('A');
 			Assert::AreEqual(size_t(1), lq.size());
 		}
 
 		TEST_METHOD(push_back_doesnot_increase_size_beyond_max_size)
 		{
-			queue<char> lq(2);
+			queue lq(2);
 			lq.push_back('A');
 			lq.push_back('B');
 			Assert::AreEqual(size_t(2), lq.size());
@@ -34,7 +33,7 @@ namespace UnitTests
 
 		TEST_METHOD(cbegin_returns_iterator_to_first_element)
 		{
-			queue<char> lq(2);
+			queue lq(2);
 			lq.push_back('A');
 			lq.push_back('B');
 			Assert::AreEqual('A', *lq.cbegin());
@@ -42,7 +41,7 @@ namespace UnitTests
 
 		TEST_METHOD(clear_removes_all_elements)
 		{
-			queue<char> lq(2);
+			queue lq(2);
 			lq.push_back('A');
 			lq.push_back('B');
 			lq.clear();

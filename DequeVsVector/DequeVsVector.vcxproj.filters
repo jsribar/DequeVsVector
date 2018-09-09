@@ -21,6 +21,9 @@
     <ClInclude Include="limited_queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="multi_pattern_match.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DequeVsVector.cpp">
