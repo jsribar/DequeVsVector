@@ -6,8 +6,6 @@
 #include <iterator>
 #include <vector>
 
-namespace core { namespace unpacker { namespace certutil {
-
 template <typename T>
 class multi_pattern_match
 {
@@ -63,5 +61,3 @@ private:
 		std::sort(patterns_m.begin(), patterns_m.end(), [](const auto& p1, const auto& p2) { return p1.size() < p2.size(); });
 	}
 };
-
-} } } // namespace core::unpacker::certutil

@@ -4,8 +4,6 @@
 #include <vector>
 #include <deque>
 
-namespace core { namespace unpacker { namespace certutil {
-
 template <typename T, class Container>
 class limited_queue
 {
@@ -33,7 +31,7 @@ public:
 		return container_m.empty();
 	}
 
-	void reset(size_t max_size)
+	virtual void reset(size_t max_size)
 	{
 		clear();
 		max_size_m = max_size;
@@ -56,11 +54,6 @@ public:
 		return container_m.size();
 	}
 
-	size_t max_size() const noexcept
-	{
-		return max_size_m;
-	}
-
 protected:
 	Container container_m;
 	size_t max_size_m{ 0 };
@@ -79,6 +72,12 @@ public:
 	limited_vector_queue(size_t max_size)
 		: limited_queue<T, std::vector<T>>(max_size)
 	{
+		this->container_m.reserve(max_size);
+	}
+
+	void reset(size_t max_size) override
+	{
+		limited_queue<T, std::vector<T>>::reset(max_size);
 		this->container_m.reserve(max_size);
 	}
 
@@ -111,5 +110,3 @@ private:
 			this->container_m.pop_front();
 	}
 };
-
-} } } // namespace core::unpacker::certutil

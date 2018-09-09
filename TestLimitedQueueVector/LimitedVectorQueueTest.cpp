@@ -12,7 +12,7 @@ namespace UnitTests
 	TEST_CLASS(limited_vector_queue)
 	{
 	public:
-		using queue = core::unpacker::certutil::limited_vector_queue<char>;
+		using queue = ::limited_vector_queue<char>;
 
 		TEST_METHOD(push_back_increases_size)
 		{

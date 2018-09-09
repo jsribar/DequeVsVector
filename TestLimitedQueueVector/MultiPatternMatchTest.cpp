@@ -12,7 +12,7 @@ namespace UnitTests
 	TEST_CLASS(multi_pattern_match)
 	{
 	public:
-		using match = core::unpacker::certutil::multi_pattern_match<char>;
+		using match = ::multi_pattern_match<char>;
 
 		TEST_METHOD(add_pattern_increases_size)
 		{
